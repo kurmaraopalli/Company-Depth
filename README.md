@@ -1,4 +1,4 @@
-# Corporate Depth Analyzer
+# Company-Depth
 
 An Open Source Intelligence (OSINT) tool designed to map the global footprint, financial scale, and structural hierarchy of any corporate company using just its name. This application is designed to be hosted entirely within the GitHub ecosystem.
 
@@ -65,25 +65,52 @@ To resolve a raw company name into a deep profile, this project integrates the f
 ## ⚙️ Quick Start (Local Development)
 
 ### Prerequisites
-* Node.js (v18+) or Python (3.10+)
-* API Keys for OpenCorporates and Yahoo Finance
+* Node.js (v18+)
+* **No API keys required** for basic functionality (uses free sources)
+* Optional API keys for enhanced data:
+  - OpenCorporates API key (for detailed corporate registry data)
+  - Alpha Vantage API key (for financial market data)
 
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com
-   cd corporate-depth-analyzer
+   git clone https://github.com/YOUR_USERNAME/Company-Depth.git
+   cd Company-Depth
    ```
 2. Install dependencies:
    ```bash
-   npm install  # For frontend setup
-   # OR
-   pip install -r requirements.txt  # For Python GitHub Actions setup
+   npm install
    ```
 3. Run the development environment:
    ```bash
    npm run dev
    ```
+4. Open your browser to `http://localhost:3000/Company-Depth/`
+
+### Data Source Options
+The app supports **three data source modes**:
+
+1. **Free Sources Only** (No API keys required)
+   - Uses Wikidata, Wikipedia, and GitHub APIs
+   - Provides company search, descriptions, structure info, and digital footprint
+   - Works immediately without any setup
+
+2. **Auto Mode** (Recommended)
+   - Uses free sources by default
+   - Automatically enhances with API keys when available
+   - Best of both worlds
+
+3. **API Only** (Requires API keys)
+   - Uses OpenCorporates and Alpha Vantage APIs
+   - More detailed corporate registry and financial data
+   - Requires API key setup
+
+### Optional API Keys Setup
+For enhanced data, click the **Settings** button and add:
+- **OpenCorporates API key** (detailed corporate data)
+  - Get free key at: https://opencorporates.com/api
+- **Alpha Vantage API key** (financial market data)
+  - Get free key at: https://www.alphavantage.co/support/#api-key
 
 ---
 
@@ -93,9 +120,49 @@ To resolve a raw company name into a deep profile, this project integrates the f
 2. Scroll down to the **Pages** section in the left sidebar.
 3. Under **Build and deployment**, set the source to **Deploy from a branch**.
 4. Select `main` (or `gh-pages`) and the `/root` (or `/docs`) folder, then click **Save**.
-5. Your app will be live at `https://github.io`.
+5. Your app will be live at `https://YOUR_USERNAME.github.io/Company-Depth`.
 
 ---
 
 ## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+## 🎯 Current Implementation
+
+The project has been implemented using **Option A (Serverless/Client-Side)** architecture:
+
+### ✅ Implemented Features
+- **Company Search**: Real-time search using Wikidata (free) or OpenCorporates API
+- **Entity Resolution**: Company selection from search results
+- **Free Data Sources**: Integration with Wikidata, Wikipedia, and GitHub APIs (no keys required)
+- **Financial Data**: Integration with Alpha Vantage API for market data (optional)
+- **Structural Visualization**: D3.js-based corporate hierarchy tree
+- **Financial Charts**: Chart.js-based revenue and profit analytics
+- **Digital Footprint**: GitHub organization data, Wikipedia presence, official websites
+- **API Key Management**: Secure local storage of API keys
+- **Data Source Modes**: Auto, Free Only, and API Only options
+- **Responsive UI**: Modern interface with Tailwind CSS
+
+### 🔧 Tech Stack
+- **Frontend**: React 18 + Vite
+- **Styling**: Tailwind CSS
+- **Charts**: Chart.js + react-chartjs-2
+- **Visualization**: D3.js
+- **API Client**: Axios
+
+### 🚀 Usage
+1. Select data source mode (Auto recommended for best results)
+2. Enter a company name in the search bar
+3. Select the matching company from the dropdown
+4. View comprehensive analysis across Overview, Financial, Structure, and Digital tabs
+5. Switch between companies using the "New Search" button
+
+### 📝 API Integration Notes
+- **Free Sources**: Wikidata, Wikipedia, GitHub APIs (no keys required)
+- **OpenCorporates**: Optional for detailed corporate registry data
+- **Alpha Vantage**: Optional for financial market data
+- API keys are stored locally in browser localStorage
+- No server-side components needed - fully client-side architecture
+- Works immediately without any API keys using free sources
